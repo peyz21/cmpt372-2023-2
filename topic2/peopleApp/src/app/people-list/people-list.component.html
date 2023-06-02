@@ -1,0 +1,11 @@
+SEARCH: <input type="text" [(ngModel)]="query">
+
+<p>Number of people: {{ people | search:query | countPeople }}</p>
+
+<app-person
+    *ngFor="let p of people | search:query"
+    [person]="p"
+    (delete) = "onPersonDelete($event)"
+></app-person>
+
+<a href="/add">ADD NEW PERSON</a>
