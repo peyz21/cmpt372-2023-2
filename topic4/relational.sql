@@ -103,3 +103,8 @@ SELECT * FROM boss C inner join world W on C.world = W.wid;
    4 |     2 |   2 | Roy Koopa |   2 | Desert World
 (3 rows)
 
+START TRANSACTION;
+INSERT INTO WORLD values (3, 'snow world');
+INSERT INTO level (world,lid,name) VALUES (3,1,'puffprod peaks');
+INSERT INTO boss (world,lid,name) VALUES (3,1, 'Boom Boom');
+COMMIT;
