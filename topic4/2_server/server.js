@@ -79,7 +79,17 @@ app.get('/hellooooo',function(req,res){
 
 // images upload
 app.post('/upload', function(req,res){
-    console.log(req.files.myImage)
+    // console.log(req.files.myImage)
+    var data = req.files.myImage.data
+    pool.query(`INSERT INTO pics (picdata) VALUES ($1)`,[data], function (err,result){
+        res.send("success")
+    })
+})
+
+app.get('/img', function(req,res){
+    pool.query(`SELECT * FROM pics`, function(err, result){
+        res.end(result.rows[0].picdata)
+    })
 })
 
 app.listen(8080, function(){
