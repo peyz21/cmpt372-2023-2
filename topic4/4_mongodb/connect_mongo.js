@@ -1,4 +1,4 @@
-const uri = "mongodb+srv://root:root@cluster0.reg6e.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://root/?retryWrites=true&w=majority"
 
 var MongoClient = require('mongodb').MongoClient;
 
