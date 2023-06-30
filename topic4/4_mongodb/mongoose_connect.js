@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 mongoose.set('strictQuery',false)
-mongoose.connect("mongodb+srv://root:root@cluster0.reg6e.mongodb.net/cmpt372?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://root/cmpt372?retryWrites=true&w=majority")
 
 var db = mongoose.connection
 
