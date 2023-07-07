@@ -16,6 +16,8 @@ app.use(session({
 app.get('/login', async(requ,resp) => {
     console.log(requ.method)
     // query db for a user with un,pwd
+    // result = db.query(`SELECT * FROM users WHERE username = $1 and password = $2`)
+    // result is empty --> unsuccessful login, redirect
     user = {id:1,username:'bobby'}
     requ.session.user = user
     console.log(`session ID: ${requ.sessionID}`)
@@ -26,6 +28,11 @@ app.get('/login', async(requ,resp) => {
 app.get('/protected_resource', isLoggedIn, async(requ,resp) => {
     console.log(requ.method)
     resp.send(`PORTECTED`)
+})
+
+app.get('/logout', async(requ,resp)=>{
+    requ.session.regenerate()
+    resp.redirect('/login')
 })
 
 function isLoggedIn(req,res,next){
