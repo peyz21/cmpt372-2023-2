@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// this is the route that will be used to access the web app
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
