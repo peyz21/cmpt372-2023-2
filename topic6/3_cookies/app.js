@@ -20,6 +20,11 @@ app.get("/getcookie", (req, res) => {
   }
 });
 
+app.get("/logout", (req, res) => {
+  res.clearCookie("username");
+  res.send("Cookie has been cleared!");
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

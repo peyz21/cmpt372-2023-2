@@ -13,16 +13,16 @@ app.use(session({
     maxAge: 30*60*1000
 }))
 
-app.get('/login', async(requ,resp) => {
+app.get('/login', async(req,res) => {
     console.log(requ.method)
     // query db for a user with un,pwd
     // result = db.query(`SELECT * FROM users WHERE username = $1 and password = $2`)
     // result is empty --> unsuccessful login, redirect
     user = {id:1,username:'bobby'}
-    requ.session.user = user
-    console.log(`session ID: ${requ.sessionID}`)
+    req.session.user = user
+    console.log(`session ID: ${req.sessionID}`)
 
-    resp.send(`LOGIN`)
+    res.send(`LOGIN`)
 })
 
 app.get('/protected_resource', isLoggedIn, async(requ,resp) => {
